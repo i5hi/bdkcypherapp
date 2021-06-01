@@ -7,7 +7,7 @@ Official project repository:
 
 ## init
 
-The Dockerfile contains an `ENV CPU_CORES=2` by deafult. If you do not limit this, all of your CPU will belong to rustc.
+The Dockerfile contains an `ENV CPU_CORES=2` by deafult. If you do not limit this, all of your CPU will belong to rustc during build.
 If you want speed, make number go up.
 
 ```
