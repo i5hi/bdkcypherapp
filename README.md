@@ -2,7 +2,8 @@
 Unofficial Dockerfile for bdk-cli.
 
 Official project repository:
-[bitcoindevkit](https://github.com/bitcoindevkit.org)
+
+[bitcoindevkit.org](https://github.com/bitcoindevkit.org)
 
 ## init
 ```
