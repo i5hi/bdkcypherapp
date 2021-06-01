@@ -6,6 +6,10 @@ Official project repository:
 [bitcoindevkit.org](https://github.com/bitcoindevkit.org)
 
 ## init
+
+The Dockerfile contains an `ENV CPU_CORES=2` by deafult. If you do not limit this, all of your CPU will belong to rustc.
+If you want speed, make number go up.
+
 ```
 # either clone repo or copy contents of Dockerfile
 docker build -t bdk -f Dockerfile
