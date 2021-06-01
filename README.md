@@ -20,14 +20,14 @@ Usage is just like `bdk-cli`.
 
 This example will create a descriptor for a child key derived from a hardened path. 
 
-## NOTE: If you want to get a change or deposit descriptor specifically for this key, you will have to pad the normal path to the `CHILDXPUB` while creating the policy. 
+- <b>NOTE ON DESCRIPTORS</b>: If you want to get a change or deposit descriptor for a specific key, you will have to pad the normal path to the `CHILDXPUB` while creating the policy. 
 
 If you add the change or deposit path to the `HDPATH` it will derive the subsequent child keys at those normal paths as the `CHILDXPUB`.
-You will notice if you add normal paths to the `HDPATH` variable, the resulting normal path will be prexied to the `CHILDXPUB` as `[fingegrprint/h/d/path/normal/path]xpub/*` - while a decriptor just pointing to change and descriptor paths (which what most wallets like core want) will have the normal path suffixed to the xpub like so `[fingegrprint/h/d/path/]xpub/normal/path/*` 
+You will notice if you add normal paths to the `HDPATH` variable, the resulting normal path will be prefixed to the `CHILDXPUB` as `[fingegrprint/h/d/path/normal/path]xpub/*` - while a decriptor just pointing to change and descriptor paths (which what most wallets like core want) will have the normal path suffixed to the xpub like so `[fingegrprint/h/d/path/]xpub/normal/path/*`
 
 This behaviour of `bdk-cli key derive` is to provide more flexibility in working with derived keys.
 
-For most production purposes, limit derivation to only hardened paths and let your wallet deal with deriving normal path child keys.
+For most use cases - derivation of a child key is done only upto hardened paths and further derivation is offloaded to the wallet.
 
 #### Create keys
 
