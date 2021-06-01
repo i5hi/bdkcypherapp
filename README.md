@@ -20,7 +20,7 @@ Usage is just like `bdk-cli`.
 
 This example will create a descriptor for a child key derived from a hardened path. 
 
-- <b>NOTE ON DESCRIPTORS</b>: If you want to get a change or deposit descriptor for a specific key, you will have to pad the normal path to the `CHILDXPUB` while creating the policy. 
+- <b>NOTE ON DESCRIPTORS & HDKEYS</b>: If you want to get a change or deposit descriptor for a specific key, you will have to pad the normal path to the `CHILDXPUB` while creating the policy. 
 
 If you add the change or deposit path to the `HDPATH` it will derive the subsequent child keys at those normal paths as the `CHILDXPUB`.
 You will notice if you add normal paths to the `HDPATH` variable, the resulting normal path will be prefixed to the `CHILDXPUB` as `[fingegrprint/h/d/path/normal/path]xpub/*` - while a decriptor just pointing to change and descriptor paths (which what most wallets like core want) will have the normal path suffixed to the xpub like so `[fingegrprint/h/d/path/]xpub/normal/path/*`
