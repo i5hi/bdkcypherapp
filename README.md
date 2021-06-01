@@ -8,7 +8,7 @@ Official project repository:
 ## init
 
 The Dockerfile contains an `ENV CPU_CORES=2` by deafult. If you do not limit this, all of your CPU will belong to rustc during build.
-If you want speed, make number go up.
+If you want speed, make number go up (watch out).
 
 ```
 # either clone repo or copy contents of Dockerfile
@@ -77,3 +77,7 @@ docker run bdk cli wallet -w test -d $DESC sync
 # you can also sync to a node that serves compact_filers - coming soon
 docker run bdk cli wallet --node $NODE_ADDRESS -w test -d $DESC sync
 ```
+
+### Support
+
+Please report bugs or inconsitencies. 
