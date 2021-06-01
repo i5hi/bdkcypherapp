@@ -16,4 +16,6 @@ RUN apk update
 
 RUN cargo install -j $CPU_CORES --git https://github.com/bitcoindevkit/bdk-cli --features="compiler,esplora" 
 
+RUN ln -s $(which bdk-cli) /usr/bin/cli
+
 CMD [""]
