@@ -1,11 +1,11 @@
 # bdkcypherapp
 
-Unofficial Dockerfile containerizing [bdk-cli](https://github.com/bitcoindevkit/bdk-cli).
+Unofficial Dockerfile containerizing [bdk-cli](https://github.com/bitcoindevkit/bdk-cli) towards easy plugin as a [cypherapp](https://github.com/SatoshiPortal/cyphernode) to your custom `cyphernodenet`. 
 
-Currently being used by [stackmate.net](https://stackmate.in) as a [cypherapp](https://github.com/SatoshiPortal/cyphernode) plugin.
+Full instructions to setup as a cypherapp will be available soon. 
 
-Also handy for testing different versions of bdk-cli based on a specified git repo and branch.
- 
+Currently useful for testing versions of bdk-cli based on a git repo and branch.
+
 ## init
 
 The Dockerfile contains a few `ENV` variables that you should set yourself to get the version of bdk-cli you want.
@@ -20,10 +20,10 @@ If you want speed, make number go up. Use `nproc` to see your local max cores.
 - `FEATURES`: The bdk-cli --features to add
 
 ```
-git clone https://github.com/vmenond/bdk-docker
-cd bdk-docker
-docker build -t bdk .
-echo "alias bcli='docker run bdk'" >> ~/.bashrc && source ~/.bashrc
+git clone https://github.com/vmenond/bdkcypherapp
+cd bdkcypherapp
+docker build -t bdk-cli .
+echo "alias bcli='docker run bdk-cli'" >> ~/.bashrc && source ~/.bashrc
 bcli help 
 ```
 
