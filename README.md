@@ -1,19 +1,27 @@
 # bdk-docker
-Unofficial Dockerfile for bdk-cli.
+Unofficial Dockerfile for testing bdk-cli versions.
 
 Official project repository:
 
-[bitcoindevkit.org](https://github.com/bitcoindevkit.org)
+[bitcoindevkit](https://github.com/bitcoindevkit)
 
 ## init
 
-The Dockerfile contains an `ENV CPU_CORES=2` by deafult. If you do not limit this, all of your CPU will belong to rustc during build.
-If you want speed, make number go up (watch out).
+The Dockerfile contains a few `ENV` variables that you should set yourself to get the version of bdk-cli you want.
+
+- `CPU_CORES`: If you do not limit this, all of your CPU will belong to rustc during build.
+If you want speed, make number go up. Use `nproc` to see your local max cores.
+
+- `REPO`: The git repo to use
+
+- `BRANCH`: The git branch to use
+
+- `FEATURES`: The bdk-cli --features to add
 
 ```
 # either clone repo or copy contents of Dockerfile
-docker build -t bdk -f Dockerfile
-docker run bdk cli help
+docker build -t bdk .
+docker run bdk help
 ```
 
 ## usage examples
@@ -27,7 +35,7 @@ This example will create a descriptor for a child key derived from a hardened pa
 - <b>NOTE ON DESCRIPTORS & HDKEYS</b>: If you want to get a change or deposit descriptor for a specific key, you will have to pad the normal path to the `CHILDXPUB` while creating the policy. 
 
 If you add the change or deposit path to the `HDPATH` it will derive the subsequent child keys at those normal paths as the `CHILDXPUB`.
-You will notice if you add normal paths to the `HDPATH` variable, the resulting normal path will be prefixed to the `CHILDXPUB` as `[fingegrprint/h/d/path/normal/path]xpub/*` - while a decriptor just pointing to change and descriptor paths (which what most wallets like core want) will have the normal path suffixed to the xpub like so `[fingegrprint/h/d/path/]xpub/normal/path/*`
+You will notice if you add normal paths to the `HDPATH` variable, the resulting normal path will be <b>prefixed</b> to the `CHILDXPUB` as `[fingerprint/h/d/path/normal/path]xpub/*` - while a decriptor just pointing to change and descriptor paths (which what most wallets like core want) will have the normal path <b>suffixed</b> to the xpub like so `[fingerprint/h/d/path]xpub/normal/path/*`
 
 This behaviour of `bdk-cli key derive` is to provide more flexibility in working with derived keys.
 
