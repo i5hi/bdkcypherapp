@@ -42,13 +42,3 @@ COPY --from=builder /usr/local/cargo/bin/bdk-cli /cli
 
 ENTRYPOINT ["./cli"]
 
-#CMD ["tail","-f","/dev/null"]
-
-# docker build -t bdk .
-# docker run bdk help
-
-# sniper extensions:
-# echo "alias bcli='docker run bdk'" >> ~/.bashrc && source ~/.bashrc
-# bcli help 
-
-# Have fun :)
