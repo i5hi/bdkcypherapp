@@ -2,7 +2,7 @@
 
 Unofficial Dockerfile containerizing [bdk-cli](https://github.com/bitcoindevkit/bdk-cli).
 
-Currently being used at stackmate.satsbank.io as a [cypherapp](https://cyphernode.io) plugin.
+Currently being used by [stackmate.net](https://stackmate.in) as a [cypherapp](https://cyphernode.io) plugin.
 
 Also handy for testing different versions of bdk-cli based on a specified git repo and branch.
  
