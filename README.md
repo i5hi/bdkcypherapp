@@ -23,7 +23,7 @@ git clone https://github.com/vmenond/bdk-docker
 cd bdk-docker
 docker build -t bdk .
 echo "alias bcli='docker run bdk'" >> ~/.bashrc && source ~/.bashrc
-bclihelp 
+bcli help 
 ```
 
 ## usage examples
