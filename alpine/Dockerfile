@@ -27,11 +27,7 @@ RUN cargo install -j $CPU_CORES --git $REPO --branch $BRANCH --features=$FEATURE
 FROM alpine as execution
 
 RUN apk add -u \
-    build-base linux-headers zlib zlib-dev \
-    ca-certificates \
-    jq \
-    openssl openssl-dev \
-    musl-dev gcc libffi-dev clang-libs clang libstdc++ libgcc cmake
+    libstdc++ libgcc cmake
 
 RUN apk update
 

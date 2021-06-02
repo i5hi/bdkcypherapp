@@ -10,8 +10,7 @@ Currently useful for testing versions of bdk-cli based on a git repo and branch.
 
 The Dockerfile contains a few `ENV` variables that you should set yourself to get the version of bdk-cli you want.
 
-- `CPU_CORES`: If you do not limit this, all of your CPU will belong to rustc during build.
-If you want speed, make number go up. Use `nproc` to see your local max cores.
+- `CPU_CORES`: If you do not limit this, all of your CPU will belong to rustc during build. Use `nproc` to see your local max cores.
 
 - `REPO`: The git repo to use
 
@@ -22,7 +21,7 @@ If you want speed, make number go up. Use `nproc` to see your local max cores.
 ```
 git clone https://github.com/vmenond/bdkcypherapp
 
-# lightweight option for --features=compiler
+# light-weight option for --features=compiler
 cd bdkcypherapp/scratch
 # larger image currently required for --features=compact_filters
 cd bdkcypherapp/alpine
