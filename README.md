@@ -1,10 +1,11 @@
-# bdk-docker
-Unofficial Dockerfile for testing bdk-cli versions.
+# bdkcypherapp
 
-Official project repository:
+Unofficial Dockerfile containerizing [bdk-cli](https://github.com/bitcoindevkit/bdk-cli).
 
-[bitcoindevkit](https://github.com/bitcoindevkit)
+Currently being used at stackmate.satsbank.io as a [cypherapp](https://cyphernode.io) plugin.
 
+Also handy for testing different versions of bdk-cli based on a specified git repo and branch.
+ 
 ## init
 
 The Dockerfile contains a few `ENV` variables that you should set yourself to get the version of bdk-cli you want.
