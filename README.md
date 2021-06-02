@@ -21,10 +21,17 @@ If you want speed, make number go up. Use `nproc` to see your local max cores.
 
 ```
 git clone https://github.com/vmenond/bdkcypherapp
-cd bdkcypherapp
+
+# lightweight option for --features=compiler
+cd bdkcypherapp/scratch
+# larger image currently required for --features=compact_filters
+cd bdkcypherapp/alpine
+
 docker build -t bdk-cli .
+
 echo "alias bcli='docker run bdk-cli'" >> ~/.bashrc && source ~/.bashrc
 bcli help 
+
 ```
 
 ## usage examples
