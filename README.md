@@ -19,9 +19,11 @@ If you want speed, make number go up. Use `nproc` to see your local max cores.
 - `FEATURES`: The bdk-cli --features to add
 
 ```
-# either clone repo or copy contents of Dockerfile
+git clone https://github.com/vmenond/bdk-docker
+cd bdk-docker
 docker build -t bdk .
-docker run bdk help
+echo "alias bcli='docker run bdk'" >> ~/.bashrc && source ~/.bashrc
+bclihelp 
 ```
 
 ## usage examples
@@ -45,8 +47,8 @@ For most use cases - derivation of a child key is done only upto hardened paths 
 
 ```bash
 HDPATH=m/84h/1h/0h
-MASTERXPRV=$(docker run bdk cli key generate | jq -r ".xprv")
-CHILDXPUB=$(docker run bdk cli key derive --xprv $MASTERXPRV --path $HDPATH | jq -r ".xpub")
+MASTERXPRV=$(bcli key generate | jq -r ".xprv")
+CHILDXPUB=$(bcli key derive --xprv $MASTERXPRV --path $HDPATH | jq -r ".xpub")
 ```
 
 #### Create a policy
@@ -61,7 +63,7 @@ CHANGE_POLICY="pk($(echo $CHILDXPUB | rev | cut -c3- | rev)/1/*)"
 We just use the general descriptor; without specifying change or deposit.
 
 ```bash
-DESC=$(docker run bdk cli compile $POLICY | jq -r ".descriptor")
+DESC=$(bcli compile $POLICY | jq -r ".descriptor")
 ```
 
 #### Generate Addesses 
@@ -69,21 +71,21 @@ DESC=$(docker run bdk cli compile $POLICY | jq -r ".descriptor")
 Since we are using a general descriptor,  bdk will use the same path for change and deposit
 
 ```
-docker run bdk cli wallet -w test -d $DESC get_new_address
+bcli wallet -w test -d $DESC get_new_address
 ```
 
 ### Try out more
 
 ```
-docker run bdk cli wallet -w test -d $DESC get_public_descriptor
+bcli wallet -w test -d $DESC get_public_descriptor
 ```
 If you receive funds into this address and would like to check your balance or utxos:
 
 ```
 # default syncs to an electrum 
-docker run bdk cli wallet -w test -d $DESC sync
+bcli wallet -w test -d $DESC sync
 # you can also sync to a node that serves compact_filers - coming soon
-docker run bdk cli wallet --node $NODE_ADDRESS -w test -d $DESC sync
+bcli wallet --node $NODE_ADDRESS -w test -d $DESC sync
 ```
 
 ### Support
