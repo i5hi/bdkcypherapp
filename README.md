@@ -28,8 +28,13 @@ cd bdkcypherapp/alpine
 
 docker build -t bdk-cli .
 
+# for compute only
 echo "alias bcli='docker run bdk-cli'" >> ~/.bashrc && source ~/.bashrc
+# for persistent storage (only alpine container supports volume)
+echo "alias bcli='docker run -v /.bdk-bitcoin:/path/on/host bdk-cli'" >> ~/.bashrc && source ~/.bashrc
+
 bcli help 
+
 
 ```
 

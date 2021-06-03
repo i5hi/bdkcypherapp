@@ -8,15 +8,15 @@ RUN apk add -u \
     git \
     jq \
     openssl openssl-dev \
-    musl-dev gcc libffi-dev clang-libs
+    musl-dev gcc libffi-dev clang-libs clang libstdc++ libgcc cmake
 
 RUN apk update
 
-ENV CPU_CORES=3
+ENV CPU_CORES=6
 ENV REPO="https://github.com/bitcoindevkit/bdk-cli"
 ENV BRANCH="master"
 ENV FEATURES="compiler"
-ENV RUSTFLAGS="-Ctarget-feature=-crt-static"
+#ENV RUSTFLAGS="-Ctarget-feature=-crt-static"
 
 RUN cargo install -j $CPU_CORES --git $REPO --branch $BRANCH --features=$FEATURES
 

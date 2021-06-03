@@ -30,5 +30,7 @@ RUN apk update
 
 COPY --from=builder /usr/local/cargo/bin/bdk-cli /cli
 
+VOLUME ["/.bdk-bitcoin"]
+
 ENTRYPOINT ["./cli"]
 
