@@ -12,16 +12,13 @@ RUN apk add -u \
 
 RUN apk update
 
-RUN git config --global core.eol lf && \
-    git config --global core.autocrlf input
-
 ENV CPU_CORES=3
 ENV REPO="https://github.com/bitcoindevkit/bdk-cli"
 ENV BRANCH="master"
 ENV FEATURES="compiler"
-ENV RUSTFLAGS="-C target-feature=+crt-static"
+ENV RUSTFLAGS="-Ctarget-feature=-crt-static"
 
-RUN cargo install -j $CPU_CORES --git $REPO --branch $BRANCH --features=$FEATURES --target x86_64-unknown-linux-musl
+RUN cargo install -j $CPU_CORES --git $REPO --branch $BRANCH --features=$FEATURES
 
 FROM scratch as execution
 
