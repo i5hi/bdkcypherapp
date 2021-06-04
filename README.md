@@ -30,8 +30,14 @@ docker build -t bdk-cli .
 
 # for compute only
 echo "alias bcli='docker run bdk-cli'" >> ~/.bashrc && source ~/.bashrc
-# for persistent storage (only alpine container supports volume)
-echo "alias bcli='docker run -v /.bdk-bitcoin:/path/on/host bdk-cli'" >> ~/.bashrc && source ~/.bashrc
+# for compute only (within cyphernodenet)
+echo "alias bcli='docker run --network cyphernodenet bdk-cli'" >> ~/.bashrc && source ~/.bashrc
+
+
+# for persistent storage (only alpine container supports volume - use path on host to .bdk-bitcoin)
+echo "alias bcli='docker run -v /.bdk-bitcoin:~/.bdk-bitcoin bdk-cli'" >> ~/.bashrc && source ~/.bashrc
+# for persistent storage (within cyphernodenet)
+echo "alias bcli='docker run --network cyphernodenet -v /.bdk-bitcoin:~/.bdk-bitcoin'" >> ~/.bashrc && source ~/.bashrc
 
 bcli help 
 
@@ -97,6 +103,12 @@ If you receive funds into this address and would like to check your balance or u
 # default syncs to an electrum 
 bcli wallet -w test -d $DESC sync
 # you can also sync to a node that serves compact_filers - coming soon
+# local bitcoind
+NODE_ADDRESS=127.0.0.1:18333
+# cyphernodenet
+NODE_ADDRESS=dist_bitcoin_1:18333
+
+# sync bdk to node
 bcli wallet --node $NODE_ADDRESS -w test -d $DESC sync
 ```
 
