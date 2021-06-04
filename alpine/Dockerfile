@@ -28,9 +28,13 @@ RUN apk add -u \
 
 RUN apk update
 
+RUN adduser -S bdk
+
+USER bdk
+
 COPY --from=builder /usr/local/cargo/bin/bdk-cli /cli
 
-VOLUME ["/.bdk-bitcoin"]
+VOLUME ["/home/bdk/.bdk-bitcoin"]
 
 ENTRYPOINT ["./cli"]
 
