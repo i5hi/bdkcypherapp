@@ -23,6 +23,8 @@ RUN cargo install -j $CPU_CORES --git $REPO --branch $BRANCH --features=$FEATURE
 FROM scratch as execution
 
 COPY --from=builder /usr/local/cargo/bin/bdk-cli /cli
-
+COPY --from=builder /tmp /tmp
+ENV HOME=/tmp
+VOLUME ["/tmp"]
 ENTRYPOINT ["./cli"]
 
