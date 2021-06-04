@@ -30,16 +30,28 @@ docker build -t bdk-cli .
 
 # for compute only
 echo "alias bcli='docker run bdk-cli'" >> ~/.bashrc && source ~/.bashrc
+
 # for compute only (within cyphernodenet)
 echo "alias bcli='docker run --network cyphernodenet bdk-cli'" >> ~/.bashrc && source ~/.bashrc
 
-
 # persistance currently requies chmod 777 on local ~/.bdk-bitcoin 
 # successive updates will allow using a fixed uid for bdk which can be set as the group for ~/.bdk-bitcoin
-# for persistent storage (only alpine container supports volume - use path on host to .bdk-bitcoin)
+
+# ALPINE
+# for persistent storage (use path on host to .bdk-bitcoin)
 echo "alias bcli='docker run -v /home/youruser/.bdk-bitcoin:/home/bdk/.bdk-bitcoin bdk-cli'" >> ~/.bashrc && source ~/.bashrc
+
 # for persistent storage (within cyphernodenet)
 echo "alias bcli='docker run --network cyphernodenet -v /home/youruser/.bdk-bitcoin:/home/bdk/.bdk-bitcoin'" >> ~/.bashrc && source ~/.bashrc
+
+
+# SCRATCH
+# for persistent storage (use path on host to .bdk-bitcoin)
+echo "alias bcli='docker run -v /home/youruser/.bdk-bitcoin:/tmp bdk-cli'" >> ~/.bashrc && source ~/.bashrc
+
+# for persistent storage (within cyphernodenet)
+echo "alias bcli='docker run --network cyphernodenet -v /home/youruser/.bdk-bitcoin:tmp bdk-cli'" >> ~/.bashrc && source ~/.bashrc
+
 
 bcli help 
 
